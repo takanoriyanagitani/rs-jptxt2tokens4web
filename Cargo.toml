@@ -1,0 +1,46 @@
+[package]
+name = "rs-jptxt2tokens4web"
+version = "0.1.0"
+edition = "2024"
+
+exclude = [
+]
+
+[lib]
+crate-type = ["cdylib"]
+
+[lints.rust]
+unsafe_code = "deny"
+
+[lints.clippy]
+unwrap_used = "forbid"
+expect_used = "forbid"
+panic = "forbid"
+
+[profile.release-wasi]
+inherits = "release"
+lto = true
+strip = true
+opt-level = 's'
+codegen-units = 1
+
+[dependencies.serde_json]
+version = "1"
+default-features = false
+features = [
+    "std",
+]
+
+[dependencies.lindera]
+version = "3"
+default-features = false
+features = [
+    "embed-ipadic",
+]
+
+[features]
+default = [
+]
+
+include-dummy-start = [
+]
